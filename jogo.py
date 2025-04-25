@@ -50,7 +50,24 @@ class Heroi(Personagem):
   def exibir_detalhes(self):
     return f"{super().exibir_detalhes()}\nHabilidade: {self.__habilidade}"
 
+class Inimigo(Personagem):
+  def __init__(self, nome: str, vida: int, nivel: int, tipo: str):
+    super().__init__(nome,vida,nivel)
+
+    try:
+      if not isinstance(tipo,str):
+        raise TypeError("Tipo inválido: 'tipo' do inimigo deve ser uma string")
+    except TypeError as e:
+      print(f"Erro: {e}")
+      raise
+      
+    self.__tipo = tipo
+
+  def exibir_detalhes(self):
+    return f"{super().exibir_detalhes()}\nTipo: {self.__tipo}"
 
   
 heroi = Heroi("Hercules", 100, 1, "Força")
 print(heroi.exibir_detalhes())
+inimigo = Inimigo("Minotauro", 80, 2, "Besta")
+print(inimigo.exibir_detalhes())
