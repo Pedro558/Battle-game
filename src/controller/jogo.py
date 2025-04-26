@@ -4,8 +4,8 @@ from src.models.inimigo import Inimigo
 class Jogo:
   """Classe orquestradora do jogo"""
   def __init__(self) -> None:
-    self.heroi = Heroi("Hercules", 100, 1, "Força")
-    self.inimigo = Inimigo("Minotauro", 80, 2, "Besta")
+    self.heroi = Heroi("Hercules", 100, 5, "Força")
+    self.inimigo = Inimigo("Minotauro", 20, 2, "Besta")
   
   def iniciar_batalha(self):
     print("Hello")
@@ -15,8 +15,13 @@ class Jogo:
       print(self.heroi.exibir_detalhes())
       print(self.inimigo.exibir_detalhes())
 
-      input("Pressione Enter para atacar...")
-      escolha = input("Escolha o ataque: 1 - Ataque normal, 2 - Ataque especial ")
+      input("\nPressione Enter para atacar...")
+      escolha = input("Escolha o ataque: 1 - Ataque normal, 2 - Ataque especial: ")
+
+      if escolha == "1":
+        self.heroi.atacar(self.inimigo)
+      else:
+        print("Escolha inválida, escolha novamente")
 
 
 
