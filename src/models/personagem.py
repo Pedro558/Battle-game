@@ -19,9 +19,23 @@ class Personagem:
   def vida(self):
     return self.__vida
   
+  @vida.setter
+  def vida(self, value):
+    self.__vida = value
+  
   @property
   def nivel(self):
     return self.__nivel
   
   def exibir_detalhes(self):
     return f"\nNome: {self.__nome}\nVida: {self.__vida}\nNível: {self.__nivel}"
+  
+  def atacar(self, alvo):
+    dano = self.__nivel * 2
+    alvo.vida -= dano
+
+    if alvo.vida <= 0:
+      alvo.vida = 0
+      print(f"{alvo.nome} foi derrotado!")
+    else:
+      print(f"{self.__nome} atacou {alvo.nome} e causou {dano} de dano!")    
