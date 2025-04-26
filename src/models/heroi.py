@@ -1,4 +1,4 @@
-from Game.models.personagem import Personagem
+from src.models.personagem import Personagem
 
 class Heroi(Personagem):
   def __init__(self, nome: str, vida: int, nivel: int, habilidade: str):
