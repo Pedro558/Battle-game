@@ -1,3 +1,5 @@
+import random
+
 class Personagem:
   def __init__(self, nome: str, vida: int, nivel: int):
     try:
@@ -31,11 +33,12 @@ class Personagem:
     return f"\nNome: {self.__nome}\nVida: {self.__vida}\nNível: {self.__nivel}"
   
   def atacar(self, alvo):
-    dano = self.__nivel * 2
-    alvo.vida -= dano
+    dano = random.randint(self.nivel * 2, self.nivel * 4)
+    alvo.receber_ataque(dano)
+    print(f"{self.nome} atacou {alvo.nome} e causou {dano} de dano!")
 
-    if alvo.vida <= 0:
-      alvo.vida = 0
-      print(f"{alvo.nome} foi derrotado!")
-    else:
-      print(f"{self.__nome} atacou {alvo.nome} e causou {dano} de dano!")    
+  def receber_ataque(self, dano):
+    self.vida -= dano
+    if self.vida <= 0:
+      self.vida = 0
+      
