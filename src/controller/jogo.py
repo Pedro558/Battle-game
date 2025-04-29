@@ -5,7 +5,7 @@ class Jogo:
   """Classe orquestradora do jogo"""
   def __init__(self) -> None:
     self.heroi = Heroi("Hercules", 100, 5, "Força")
-    self.inimigo = Inimigo("Minotauro", 20, 2, "Besta")
+    self.inimigo = Inimigo("Minotauro", 80, 2, "Besta")
   
   def iniciar_batalha(self):
     print("Hello")
@@ -20,10 +20,18 @@ class Jogo:
 
       if escolha == "1":
         self.heroi.atacar(self.inimigo)
+      elif escolha == "2":
+        self.heroi.ataque_especial(self.inimigo)
       else:
         print("Escolha inválida, escolha novamente")
 
-
-
+      if self.inimigo.vida > 0:
+        # inimigo ataca herói
+        self.inimigo.atacar(self.heroi)
+    
+    if self.heroi.vida > 0:
+      print(f"{self.heroi.nome} venceu a batalha!")
+    else:
+      print(f"{self.inimigo.nome} venceu a batalha!")
 
       
